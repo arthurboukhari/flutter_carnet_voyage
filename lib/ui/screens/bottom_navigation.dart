@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_carnet_voyage/ui/screens/home_screen.dart';
-import 'package:flutter_carnet_voyage/ui/screens/profile_screen.dart';
+import 'package:flutter_carnet_voyage/ui/screens/place_list_screen.dart';
+import 'package:flutter_carnet_voyage/ui/screens/contact_list_screen.dart';
 
 
 class BottomNavigation extends StatefulWidget {
@@ -12,8 +12,8 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
-  Widget _home = Home();
-  Widget _profile = Profile();
+  Widget _placelist = PlaceList();
+  Widget _contact = ContactList();
   
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Contact',
             ),
           ],
           currentIndex: _selectedIndex,
@@ -45,10 +45,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   Widget getBody(int index) {
     if (index == 0) {
-      return _profile;
+      return _placelist;
     } else if (index == 1) {
-      return _home;
+      return _contact;
     }
-    return _profile;
+    return _placelist;
   }
 }

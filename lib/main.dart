@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carnet_voyage/repositories/user_repository.dart';
 import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
+import 'package:flutter_carnet_voyage/ui/screens/contact_detail_screen.dart';
 import 'package:flutter_carnet_voyage/ui/screens/login_screen.dart';
 
 import 'blocs/user_cubit.dart';
@@ -43,7 +44,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocBuilder<UserCubit, bool>(
-        builder: (context, isConnected) => isConnected ? const BottomNavigation() : const LoginScreen()),
+        builder: (context, isConnected) => isConnected ? const BottomNavigation() : const LoginScreen()
+      ),
+       routes: {
+        '/contact-detail': (context) => ContactDetail(),
+      },
     );
   }
 }
