@@ -4,7 +4,7 @@ import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
 import 'package:flutter_carnet_voyage/ui/screens/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_carnet_voyage/ui/screens/components/Component.dart';
+import 'package:flutter_carnet_voyage/ui/screens/components/rounded_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -138,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             SizedBox(
                               height: 55,
                             ),
-                            RoundButton(
+                            RoundedButton(
                                 title: "Inscription",
                                 tapfun: () {
                                   FirebaseAuth.instance

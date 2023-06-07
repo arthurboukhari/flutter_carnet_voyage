@@ -4,7 +4,7 @@ import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
 import 'package:flutter_carnet_voyage/ui/screens/register_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:flutter_carnet_voyage/ui/screens/components/Component.dart';
+import 'package:flutter_carnet_voyage/ui/screens/components/rounded_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(
                               height: 55,
                             ),
-                            RoundButton(
+                            RoundedButton(
                                 title: "Se connecter",
                                 tapfun: () {
                                   FirebaseAuth.instance
