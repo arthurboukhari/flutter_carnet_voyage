@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "flutter_applica" "\0"
+            VALUE "FileDescription", "flutter_carnet_voyage" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "flutter_applica" "\0"
+            VALUE "InternalName", "flutter_carnet_voyage" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "flutter_applica.exe" "\0"
-            VALUE "ProductName", "flutter_applica" "\0"
+            VALUE "OriginalFilename", "flutter_carnet_voyage.exe" "\0"
+            VALUE "ProductName", "flutter_carnet_voyage" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

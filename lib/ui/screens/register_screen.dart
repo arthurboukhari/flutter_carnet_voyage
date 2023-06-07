@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_applica/ui/screens/bottom_navigation.dart';
-import 'package:flutter_applica/ui/screens/login_screen.dart';
+import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
+import 'package:flutter_carnet_voyage/ui/screens/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_applica/ui/screens/components/Component.dart';
+import 'package:flutter_carnet_voyage/ui/screens/components/Component.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

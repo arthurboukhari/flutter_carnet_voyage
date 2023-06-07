@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_applica/ui/screens/home_screen.dart';
-import 'package:flutter_applica/ui/screens/profile_screen.dart';
+import 'package:flutter_carnet_voyage/ui/screens/home_screen.dart';
+import 'package:flutter_carnet_voyage/ui/screens/profile_screen.dart';
 
 
 class BottomNavigation extends StatefulWidget {

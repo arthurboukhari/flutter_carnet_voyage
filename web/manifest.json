@@ -1,6 +1,6 @@
 {
-    "name": "flutter_applica",
-    "short_name": "flutter_applica",
+    "name": "flutter_carnet_voyage",
+    "short_name": "flutter_carnet_voyage",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
