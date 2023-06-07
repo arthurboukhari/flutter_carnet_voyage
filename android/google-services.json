@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83707367094",
+    "project_id": "flutter-carnet-de-voyage",
+    "storage_bucket": "flutter-carnet-de-voyage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83707367094:android:1f57908fef9ff90d08a017",
+        "android_client_info": {
+          "package_name": "com.example.flutter_carnet_voyage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83707367094-v3n80fbfrkcpphd4s712h2b91p2aqgkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGZ4yhV8Nw_ZO7SlPF7TjSFK1DG7xzEOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83707367094-v3n80fbfrkcpphd4s712h2b91p2aqgkg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
