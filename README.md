@@ -1,16 +1,21 @@
-# flutter_applica
+# Flutter carnet de voyage
 
-A new Flutter project.
+## Présentation :
 
-## Getting Started
+Pour les prochaines vacances, je vais avoir besoin d’une application mobile me
+permettant de noter mes activités, mes sorties réalisées. La recherche de lieux
+serait un plus.
 
-This project is a starting point for a Flutter application.
+## Nos fonctionnalités
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Se connecter / S'inscrire
+- Se deconnnecter
+- Afficher les destinations
+- Afficher un classement des destinations
+- Ajouter des destinations
+- Supprimer des destinations
+- Noter et ajouter un commentaire des destinations
+- Saisir si vous avez vister une destination
+- Afficher une liste d'utilisateur
+- Profil d'utilisateur (voir les destionations visités)
+- Pouvoir suivre un utilisateur
