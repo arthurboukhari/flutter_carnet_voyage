@@ -11,16 +11,38 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _selectedIndex = 0;
-  Widget _placelist = PlaceList();
-  Widget _contact = ContactList();
   
+  int _currentIndex = 0;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getBody(_selectedIndex),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: onPageChanged,
+        children: <Widget>[
+          PlaceList(),
+          ContactList()
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          currentIndex: _currentIndex,
+          selectedItemColor: Colors.lightBlue,
+          onTap: onTabTapped,
+        items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
@@ -30,25 +52,21 @@ class _BottomNavigationState extends State<BottomNavigation> {
               label: 'Contact',
             ),
           ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.lightBlue,
-          onTap: _onItemTapped,
       ),
     );
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  void onTabTapped(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 
-  Widget getBody(int index) {
-    if (index == 0) {
-      return _placelist;
-    } else if (index == 1) {
-      return _contact;
-    }
-    return _placelist;
+  void onPageChanged(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }
