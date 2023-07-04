@@ -20,6 +20,7 @@ class UserCubit extends Cubit<bool> {
       emit(true);
     } catch (e) {
       emit(false);
+      throw Exception(e);
     }
   }
 
