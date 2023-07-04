@@ -37,10 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
               try {
                 await context.read<UserCubit>().login(
                     emailcon.text.toString(), passwordcon.text.toString());
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BottomNavigation()));
               } catch (e) {
                 Fluttertoast.showToast(
                     msg: "Email ou mot de passe invalide.",
@@ -49,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     timeInSecForIosWeb: 1,
                     backgroundColor: Colors.red,
                     textColor: Colors.white,
+                    webBgColor: "red",
                     fontSize: 16.0);
               }
             }

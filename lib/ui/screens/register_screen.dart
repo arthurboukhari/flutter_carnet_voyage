@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carnet_voyage/blocs/user_cubit.dart';
-import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
 import 'package:flutter_carnet_voyage/ui/screens/components/authentication.dart';
 import 'package:flutter_carnet_voyage/ui/screens/login_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -36,10 +35,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           emailcon.text.toString(),
                           passwordcon.text.toString(),
                           userNamecon.text.toString());
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BottomNavigation()));
                     } catch (e) {
                       Fluttertoast.showToast(
                           msg: "Une erreur s'est produite.",
@@ -47,6 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           gravity: ToastGravity.CENTER,
                           timeInSecForIosWeb: 1,
                           backgroundColor: Colors.red,
+                          webBgColor: "red",
                           textColor: Colors.white,
                           fontSize: 16.0);
                     }
