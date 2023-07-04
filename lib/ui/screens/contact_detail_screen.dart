@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import '../../models/contact.dart';
 
 class ContactDetail extends StatelessWidget {
+
   const ContactDetail({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final contact = ModalRoute.of(context)!.settings.arguments as Contact?;
+    if (contact == null) {
+      Navigator.pop(context);      
+    }
     return Stack(
         children: [
           Container(
@@ -54,7 +60,7 @@ class ContactDetail extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Vincent',
+                  contact!.username,
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
@@ -62,7 +68,7 @@ class ContactDetail extends StatelessWidget {
                 ),
                 SizedBox(height: 10.0),
                 Text(
-                  'HMMMMM les enfants',
+                  contact.description,
                   style: TextStyle(
                     fontSize: 16.0,
                   ),

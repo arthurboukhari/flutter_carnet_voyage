@@ -1,7 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carnet_voyage/ui/screens/contact_card.dart';
+
+import '../../models/contact.dart';
+import '../../repositories/contact_repository.dart';
+import 'components/search_bar.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({super.key});
@@ -11,6 +17,8 @@ class ContactList extends StatefulWidget {
 }
 
 class _ContactListState extends State<ContactList> {
+  final ContactRepository _contactRepository = ContactRepository();
+  List<Contact> _contacts = [];
 
   @override
   void didChangeDependencies() {
@@ -22,18 +30,28 @@ class _ContactListState extends State<ContactList> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _fetchContacts();
+  }
+
+  void _fetchContacts() {
+    setState(() {
+      _contacts = _contactRepository.getContacts();
+      print(_contacts);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
+    return SafeArea(
       child: Scaffold(
         body: Column(
           children: [
             Expanded(
-              child: ListView.builder(itemBuilder: (BuildContext context, index) {
-                return ContactCard();
+              child:  SearchBar(),
+            ),
+            Expanded(
+              child: ListView.builder(itemCount: _contacts.length,itemBuilder: (BuildContext context, index,){
+                return ContactCard(contact : _contacts[index]);
               }),
             ),
           ],

@@ -1,15 +1,13 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carnet_voyage/models/contact.dart';
 
-class ContactCard extends StatefulWidget {
-  const ContactCard({super.key});
+class ContactCard extends StatelessWidget {
 
-  @override
-  State<ContactCard> createState() => _ContactCardState();
-}
+  final Contact contact;
+  const ContactCard({required this.contact, super.key});
 
-class _ContactCardState extends State<ContactCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +16,8 @@ class _ContactCardState extends State<ContactCard> {
       child: GestureDetector(
           onTap: () {
             Navigator.pushNamed(
-              context, '/contact-detail'
+              context, '/contact-detail',
+              arguments: contact
             ); // Navigation vers la deuxième page
           },
           child: ListView(
@@ -42,8 +41,8 @@ class _ContactCardState extends State<ContactCard> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Vincent"),
-                      Text("HMMMMM les enfants", style: TextStyle(fontSize: 10))
+                      Text(contact.username),
+                      Text(contact.description, style: TextStyle(fontSize: 10))
                     ]),
               )
             ],

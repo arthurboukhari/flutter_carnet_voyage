@@ -10,6 +10,7 @@ import 'package:flutter_carnet_voyage/ui/screens/contact_detail_screen.dart';
 import 'package:flutter_carnet_voyage/ui/screens/login_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'blocs/user_cubit.dart';
+import 'ui/screens/place_detail_screen.dart';
 
 void main() async {
 
@@ -55,10 +56,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocBuilder<UserCubit, bool>(
-        builder: (context, isConnected) => isConnected ? const BottomNavigation() : const LoginScreen()
+        // builder: (context, isConnected) => isConnected ? const BottomNavigation() : const LoginScreen()
+        builder: (context, isConnected) => const BottomNavigation()
       ),
        routes: {
         '/contact-detail': (context) => ContactDetail(),
+        '/place-detail': (context) => PlaceDetail(),
       },
     );
   }
