@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_carnet_voyage/ui/screens/components/rounded_button.dart';
+import 'package:flutter_carnet_voyage/ui/screens/widgets/rounded_button.dart';
 
 class Authentication extends StatelessWidget {
   AuthenticationAttributes authenticationAttributes;

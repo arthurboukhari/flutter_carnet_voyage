@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_carnet_voyage/blocs/user_cubit.dart';
 import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
-import 'package:flutter_carnet_voyage/ui/screens/components/authentication.dart';
+import 'package:flutter_carnet_voyage/ui/screens/widgets/authentication.dart';
 import 'package:flutter_carnet_voyage/ui/screens/register_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:flutter_carnet_voyage/ui/screens/components/rounded_button.dart';
+import 'package:flutter_carnet_voyage/ui/screens/widgets/rounded_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

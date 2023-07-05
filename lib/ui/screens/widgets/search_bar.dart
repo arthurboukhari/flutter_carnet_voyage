@@ -21,7 +21,7 @@ class _SearchBarState extends State<SearchBar> {
   void filterSearchResults(String query) {
     List<String> searchList = [];
     searchList.addAll(items);
-    
+
     if (query.isNotEmpty) {
       List<String> tempList = [];
       for (int i = 0; i < searchList.length; i++) {

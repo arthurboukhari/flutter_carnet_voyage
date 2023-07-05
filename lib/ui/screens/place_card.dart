@@ -1,45 +1,79 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
+import '../../models/place.dart';
 
+class PlaceCard extends StatelessWidget {
+  final Place place;
 
-class PlaceCard extends StatefulWidget {
-  const PlaceCard({super.key});
+  PlaceCard({required this.place});
 
-  @override
-  State<PlaceCard> createState() => _PlaceCardState();
-}
-
-class _PlaceCardState extends State<PlaceCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
-      margin: EdgeInsets.all(15),
-      color: Color.fromARGB(255, 245, 243, 243),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(
-            context, '/place-detail'
-          ); // Navigation vers la deuxième page
-        },
-        child: Column(
-          children: [
-            Image(image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')),
-            Container(
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+            child: Image.network(
+              place.photoUrl ??
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637",
+              height: 200.0,
               width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 35),
-              decoration: BoxDecoration(
-                color: Colors.grey[100]
-              ),
-              child: Column(
-                children: [
-                  Text("Titre"),
-                  Text("categories")
-              ])
-            )
-          ]
-        ),
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        place.name,
+                        style: TextStyle(
+                            fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    if (place.visited)
+                      Chip(
+                          label: Text("Visité",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic)),
+                          backgroundColor: Color.fromARGB(166, 65, 255, 65))
+                    else
+                      Chip(
+                          label: Text("Non visité",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontStyle: FontStyle.italic)),
+                          backgroundColor: Color.fromARGB(255, 255, 4, 4))
+                  ],
+                ),
+                SizedBox(height: 10.0),
+                if (place.rating != null)
+                  Row(
+                    children: List.generate(
+                      5,
+                      (index) => Icon(
+                        index < place.rating! ? Icons.star : Icons.star_border,
+                        color: Colors.yellow[700],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_carnet_voyage/blocs/places_cubit.dart';
+import 'package:flutter_carnet_voyage/repositories/place_repository.dart';
 import 'package:flutter_carnet_voyage/repositories/user_repository.dart';
 import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
 import 'package:flutter_carnet_voyage/ui/screens/contact_detail_screen.dart';
@@ -31,6 +33,7 @@ void main() async {
 
   final UserRepository userRepository = UserRepository(FirebaseAuth.instance);
   final UserCubit userCubit = UserCubit(userRepository);
+
   await userCubit.init();
 
   runApp(
@@ -38,6 +41,9 @@ void main() async {
       providers: [
         BlocProvider(
           create: (_) => userCubit,
+        ),
+        BlocProvider(
+          create: (_) => PlacesCubit(PlaceRepository()),
         ),
       ],
       child: const MyApp(),

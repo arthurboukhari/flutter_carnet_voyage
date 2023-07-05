@@ -7,7 +7,7 @@ import 'package:flutter_carnet_voyage/ui/screens/contact_card.dart';
 
 import '../../models/contact.dart';
 import '../../repositories/contact_repository.dart';
-import 'components/search_bar.dart';
+import 'widgets/search_bar.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({super.key});
