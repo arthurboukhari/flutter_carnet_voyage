@@ -1,62 +1,69 @@
-import 'dart:developer';
-
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carnet_voyage/ui/screens/contact_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/contact_cubit.dart';
+import '../../blocs/contact_state.dart';
 import '../../models/contact.dart';
+import '../../models/data_state.dart';
 import '../../repositories/contact_repository.dart';
-import 'widgets/search_bar.dart';
 
-class ContactList extends StatefulWidget {
-  const ContactList({super.key});
-
-  @override
-  State<ContactList> createState() => _ContactListState();
-}
-
-class _ContactListState extends State<ContactList> {
-  final ContactRepository _contactRepository = ContactRepository();
-  List<Contact> _contacts = [];
-
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _fetchContacts();
-  }
-
-  void _fetchContacts() {
-    setState(() {
-      _contacts = _contactRepository.getContacts();
-      print(_contacts);
-    });
-  }
+class ContactList extends StatelessWidget {
+  final ContactCubit contactCubit = ContactCubit(ContactRepository());
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child:  SearchBar(),
-            ),
-            Expanded(
-              child: ListView.builder(itemCount: _contacts.length,itemBuilder: (BuildContext context, index,){
-                return ContactCard(contact : _contacts[index]);
-              }),
-            ),
-          ],
-        ),
-      ),
+    context.read<ContactCubit>().fetchContacts();
+    return Scaffold(
+    body: BlocBuilder<ContactCubit, ContactState>(
+      builder: (context, state) {
+        print(state.contacts.length);
+        switch (state.dataState) {
+      case DataState.loading:
+        return SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child:
+        const Center(child: CircularProgressIndicator()));
+      case DataState.loaded:
+        return BlocBuilder<ContactCubit, ContactState>(
+        bloc: contactCubit,
+        builder: (context, state) {
+          return Column(
+            children: [
+              TextField(
+                onChanged: (value) {
+                  contactCubit.filterContacts(value);
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search contacts...',
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: state.contacts.length,
+                  itemBuilder: (context, index) {
+                    final contact = state.contacts[index];
+                    return ListTile(
+                      title: Text(contact.username),
+                      subtitle: Text(contact.description),
+                      // Affichez d'autres détails du contact selon vos besoins
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        },
+      );
+      case DataState.error:
+        return const Center(
+          child: Text(
+      'Une erreur est survenue, veuillez recommencer'),
+        );
+        }
+      }
+    ),
+    
+      
     );
   }
 }

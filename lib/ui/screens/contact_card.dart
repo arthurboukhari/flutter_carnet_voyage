@@ -39,12 +39,31 @@ class ContactCard extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 20, top: 10),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(contact.username),
-                      Text(contact.description, style: TextStyle(fontSize: 10))
-                    ]),
-              )
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(contact.username),
+                    Text(contact.description, style: TextStyle(fontSize: 10))
+                  ]
+                ),
+              ),
+              // Positioned(
+              //   right: 10,
+              //   child: SizedBox(
+              //     width: 60,
+              //     height: 10,
+              //     child: TextButton(
+              //       onPressed: () {
+              //         // Action à effectuer lorsque le bouton est pressé
+              //       },
+              //       style: ButtonStyle(
+              //         backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              //         foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              //         minimumSize: MaterialStateProperty.all<Size>(Size(100, 40)),
+              //       ),
+              //       child: Text('Suivre'),
+              //     ),
+              //   ),
+              // ),
             ],
           )),
     );

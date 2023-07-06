@@ -4,7 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_carnet_voyage/blocs/contact_cubit.dart';
 import 'package:flutter_carnet_voyage/blocs/places_cubit.dart';
+import 'package:flutter_carnet_voyage/repositories/contact_repository.dart';
 import 'package:flutter_carnet_voyage/repositories/place_repository.dart';
 import 'package:flutter_carnet_voyage/repositories/user_repository.dart';
 import 'package:flutter_carnet_voyage/ui/screens/bottom_navigation.dart';
@@ -12,6 +14,7 @@ import 'package:flutter_carnet_voyage/ui/screens/contact_detail_screen.dart';
 import 'package:flutter_carnet_voyage/ui/screens/login_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'blocs/user_cubit.dart';
+import 'ui/screens/contact_add_screen.dart';
 import 'ui/screens/place_detail_screen.dart';
 
 void main() async {
@@ -45,6 +48,9 @@ void main() async {
         BlocProvider(
           create: (_) => PlacesCubit(PlaceRepository()),
         ),
+        BlocProvider(
+          create: (_) => ContactCubit(ContactRepository()),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -68,6 +74,7 @@ class MyApp extends StatelessWidget {
        routes: {
         '/contact-detail': (context) => ContactDetail(),
         '/place-detail': (context) => PlaceDetail(),
+        '/contact-add': (context) => AddContactPage(),
       },
     );
   }

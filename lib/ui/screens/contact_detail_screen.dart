@@ -54,6 +54,21 @@ class ContactDetail extends StatelessWidget {
             ),
           ),
           Positioned(
+            top: 215.0,
+            left: 250.0,
+            child:  TextButton(
+              onPressed: () {
+                // Action à effectuer lorsque le bouton est pressé
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                minimumSize: MaterialStateProperty.all<Size>(Size(100, 40)),
+              ),
+              child: Text('Suivre'),
+            ),
+          ),
+          Positioned(
             top: 300.0, 
             left: 20.0,
             child: Column(
