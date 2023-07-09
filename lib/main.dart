@@ -68,8 +68,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocBuilder<UserCubit, bool>(
-        // builder: (context, isConnected) => isConnected ? const BottomNavigation() : const LoginScreen()
-        builder: (context, isConnected) => const BottomNavigation()
+        builder: (context, isConnected) => isConnected ? const BottomNavigation() : const LoginScreen()
       ),
        routes: {
         '/contact-detail': (context) => ContactDetail(),
