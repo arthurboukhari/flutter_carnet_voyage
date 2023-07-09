@@ -11,87 +11,89 @@ class ContactDetail extends StatelessWidget {
     if (contact == null) {
       Navigator.pop(context);      
     }
-    return Stack(
-        children: [
-          Container(
-            height: 200.0,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              image: DecorationImage(
-                image:  NetworkImage('https://img.lemde.fr/2020/12/08/0/0/3360/2219/664/0/75/0/3136064_272175590-000-py9yj-1.jpg'), // Chemin de l'image de la bannière
-                fit: BoxFit.cover,
+    return SafeArea(
+      child: Stack(
+          children: [
+            Container(
+              height: 200.0,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                image: DecorationImage(
+                  image:  NetworkImage('https://img.lemde.fr/2020/12/08/0/0/3360/2219/664/0/75/0/3136064_272175590-000-py9yj-1.jpg'), // Chemin de l'image de la bannière
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          
-          Positioned(
             
-              top: 10.0,
-              left: 10.0,
-              child: Material(
-                color: Color.fromARGB(0, 255, 255, 255),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    
-                    shape: BoxShape.circle,
+            Positioned(
+              
+                top: 10.0,
+                left: 10.0,
+                child: Material(
+                  color: Color.fromARGB(0, 255, 255, 255),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    )
                   ),
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  )
                 ),
+            ),
+            Positioned(
+              top: 115.0,
+              left: 20.0,
+              child: CircleAvatar(
+                radius: 80.0,
+                backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/4/40/Pedobear_Fancy.jpg'), // Chemin de l'image de profil
               ),
-          ),
-          Positioned(
-            top: 115.0,
-            left: 20.0,
-            child: CircleAvatar(
-              radius: 80.0,
-              backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/4/40/Pedobear_Fancy.jpg'), // Chemin de l'image de profil
             ),
-          ),
-          Positioned(
-            top: 215.0,
-            left: 250.0,
-            child:  TextButton(
-              onPressed: () {
-                // Action à effectuer lorsque le bouton est pressé
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                minimumSize: MaterialStateProperty.all<Size>(Size(100, 40)),
+            Positioned(
+              top: 215.0,
+              left: 250.0,
+              child:  TextButton(
+                onPressed: () {
+                  // Action à effectuer lorsque le bouton est pressé
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  minimumSize: MaterialStateProperty.all<Size>(Size(100, 40)),
+                ),
+                child: Text('Suivre'),
               ),
-              child: Text('Suivre'),
             ),
-          ),
-          Positioned(
-            top: 300.0, 
-            left: 20.0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  contact!.username,
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
+            Positioned(
+              top: 300.0, 
+              left: 20.0,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    contact!.username,
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(height: 10.0),
-                Text(
-                  contact.description,
-                  style: TextStyle(
-                    fontSize: 16.0,
+                  SizedBox(height: 10.0),
+                  Text(
+                    contact.description,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+      ),
     );
   }
 }

@@ -13,57 +13,61 @@ class ContactList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ContactCubit>().fetchContacts();
-    return Scaffold(
-    body: BlocBuilder<ContactCubit, ContactState>(
-      builder: (context, state) {
-        print(state.contacts.length);
-        switch (state.dataState) {
-      case DataState.loading:
-        return SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child:
-        const Center(child: CircularProgressIndicator()));
-      case DataState.loaded:
-        return BlocBuilder<ContactCubit, ContactState>(
-        bloc: contactCubit,
+    return SafeArea(
+      child: Scaffold(
+      body: BlocBuilder<ContactCubit, ContactState>(
         builder: (context, state) {
-          return Column(
-            children: [
-              TextField(
-                onChanged: (value) {
-                  contactCubit.filterContacts(value);
-                },
-                decoration: InputDecoration(
-                  hintText: 'Search contacts...',
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: state.contacts.length,
-                  itemBuilder: (context, index) {
-                    final contact = state.contacts[index];
-                    return ListTile(
-                      title: Text(contact.username),
-                      subtitle: Text(contact.description),
-                      // Affichez d'autres détails du contact selon vos besoins
-                    );
+          print(state.contacts.length);
+          switch (state.dataState) {
+        case DataState.loading:
+          return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child:
+          const Center(child: CircularProgressIndicator()));
+        case DataState.loaded:
+        print("loaded ${state.contacts}");
+          return BlocBuilder<ContactCubit, ContactState>(
+          bloc: contactCubit,
+          builder: (context, state) {
+            return Column(
+              children: [
+                TextField(
+                  onChanged: (value) {
+                    // contactCubit.filterContacts(value);
                   },
+                  decoration: InputDecoration(
+                    hintText: 'Search contacts...',
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
-      );
-      case DataState.error:
-        return const Center(
-          child: Text(
-      'Une erreur est survenue, veuillez recommencer'),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: state.contacts.length,
+                    itemBuilder: (context, index) {
+                      final contact = state.contacts[index];
+                      print(contact);
+                      return ListTile(
+                        title: Text(contact.username),
+                        subtitle: Text(contact.description),
+                        // Affichez d'autres détails du contact selon vos besoins
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
         );
+        case DataState.error:
+          return const Center(
+            child: Text(
+        'Une erreur est survenue, veuillez recommencer'),
+          );
+          }
         }
-      }
-    ),
-    
+      ),
       
+        
+      ),
     );
   }
 }
