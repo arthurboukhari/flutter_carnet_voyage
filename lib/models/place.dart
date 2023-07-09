@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Place {
   final String? id;
   final String? googleId;
@@ -9,16 +11,16 @@ class Place {
   final double? rating;
   final Location location;
   bool visited;
+  DateTime? dateVisited;
 
-  Place({this.id, this.googleId, this.rating, required this.name, required this.icon, required this.photoReference, required this.location, this.visited = false, this.photoUrl});
+  Place({this.id, this.googleId, this.rating, required this.name, required this.icon, required this.photoReference, required this.location, this.visited = false, this.photoUrl, this.dateVisited});
 
   factory Place.fromGoogleJson(Map<String, dynamic> json) {
-    print(json);
     return Place(
       googleId: json['place_id'],
       name: json['name'],
       icon: json['icon'],
-      rating: json['rating'],
+      rating: json['rating'] != null ? (json['rating'] as num).toDouble() : null,
       location: Location.fromJson(json['geometry']['location']),
       photoReference: json['photos'][0]['photo_reference']
     );
@@ -39,6 +41,7 @@ class Place {
         'address' : location.address
       },
       'visited': visited,
+      'dateVisited': dateVisited
     };
   }
 
@@ -56,7 +59,8 @@ class Place {
         longitude: json['location']['longitude'],
         address: json['location']['address'],
       ),
-      visited: json['visited']
+      visited: json['visited'],
+      dateVisited: json['dateVisited'] != null ? (json['dateVisited'] as Timestamp).toDate() : null
     );
   }
 }

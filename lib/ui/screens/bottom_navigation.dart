@@ -45,7 +45,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: 'Lieux',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),

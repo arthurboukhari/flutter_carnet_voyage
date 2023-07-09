@@ -7,13 +7,14 @@ class PlacesState {
   List<Place> places;
   List<Place> topRated;
   List<Place> visited;
+  Place? placeFromSearch;
 
-  PlacesState(this.dataState, [this.places = const [], this.topRated = const [], this.visited = const []]);
+  PlacesState(this.dataState, [this.places = const [], this.topRated = const [], this.visited = const [], this.placeFromSearch]);
 
   factory PlacesState.loading() => PlacesState(DataState.loading);
 
-  factory PlacesState.loaded(List<Place> places, List<Place> topRated, List<Place> visited) =>
-      PlacesState(DataState.loaded, places, topRated, visited);
+  factory PlacesState.loaded(List<Place> places, List<Place> topRated, List<Place> visited, Place? placeFromSearch) =>
+      PlacesState(DataState.loaded, places, topRated, visited, placeFromSearch);
 
   factory PlacesState.error() => PlacesState(DataState.error);
 }
